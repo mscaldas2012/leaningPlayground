@@ -1,0 +1,196 @@
+12/13/16 12:20:23 PM - 15: org.apache.uima.tools.cvd.MainFrame.internalRunAE(1528): INFO: Process trace of AE run:
+Component Name: AggregatePlaintextFastUMLSProcessor
+Event Type: Analysis
+Duration: 507ms (100%)
+Sub-events:
+	Component Name: Adjust NP in NP PP NP to span all three
+	Event Type: Analysis
+	Duration: 3ms (0.59%)
+
+	Component Name: LVG Annotator
+	Event Type: Analysis
+	Duration: 24ms (4.73%)
+
+	Component Name: ClearNLPDependencyParserAE
+	Event Type: Analysis
+	Duration: 100ms (19.72%)
+
+	Component Name: Chunker
+	Event Type: Analysis
+	Duration: 7ms (1.38%)
+
+	Component Name: ContextDependentTokenizerAnnotator
+	Event Type: Analysis
+	Duration: 9ms (1.78%)
+
+	Component Name: ConstituencyParserAnnotator
+	Event Type: Analysis
+	Duration: 91ms (17.95%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.HistoryCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 2ms (0.39%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.PolarityCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 2ms (0.39%)
+
+	Component Name: NegationAnnotator
+	Event Type: Analysis
+	Duration: 0ms (0%)
+
+	Component Name: DrugMentionAnnotator
+	Event Type: Analysis
+	Duration: 4ms (0.79%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.GenericCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 4ms (0.79%)
+
+	Component Name: POSTagger
+	Event Type: Analysis
+	Duration: 7ms (1.38%)
+
+	Component Name: UmlsLookupAnnotator
+	Event Type: Analysis
+	Duration: 9ms (1.78%)
+
+	Component Name: Adjust NP in NP NP to span both
+	Event Type: Analysis
+	Duration: 2ms (0.39%)
+
+	Component Name: SimpleSegmentAnnotator
+	Event Type: Analysis
+	Duration: 209ms (41.22%)
+
+	Component Name: ClearNLPSemanticRoleLabelerAE
+	Event Type: Analysis
+	Duration: 7ms (1.38%)
+
+	Component Name: TokenizerAnnotatorPTB
+	Event Type: Analysis
+	Duration: 6ms (1.18%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.SubjectCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 2ms (0.39%)
+
+	Component Name: StatusAnnotator
+	Event Type: Analysis
+	Duration: 0ms (0%)
+
+	Component Name: Sentence Detector annotator
+	Event Type: Analysis
+	Duration: 9ms (1.78%)
+
+	Component Name: ExtractionPrepAnnotator
+	Event Type: Analysis
+	Duration: 2ms (0.39%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.UncertaintyCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 3ms (0.59%)
+
+	Component Name: Fixed Flow Controller
+	Event Type: Analysis
+	Duration: 3ms (0.59%)
+
+
+12/13/16 12:20:41 PM - 15: org.apache.uima.tools.cvd.MainFrame.internalRunAE(1528): INFO: Process trace of AE run:
+Component Name: AggregatePlaintextFastUMLSProcessor
+Event Type: Analysis
+Duration: 853ms (100%)
+Sub-events:
+	Component Name: Adjust NP in NP PP NP to span all three
+	Event Type: Analysis
+	Duration: 1ms (0.12%)
+
+	Component Name: LVG Annotator
+	Event Type: Analysis
+	Duration: 46ms (5.39%)
+
+	Component Name: ClearNLPDependencyParserAE
+	Event Type: Analysis
+	Duration: 30ms (3.52%)
+
+	Component Name: Chunker
+	Event Type: Analysis
+	Duration: 21ms (2.46%)
+
+	Component Name: ContextDependentTokenizerAnnotator
+	Event Type: Analysis
+	Duration: 5ms (0.59%)
+
+	Component Name: ConstituencyParserAnnotator
+	Event Type: Analysis
+	Duration: 537ms (62.95%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.HistoryCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 34ms (3.99%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.PolarityCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 25ms (2.93%)
+
+	Component Name: NegationAnnotator
+	Event Type: Analysis
+	Duration: 0ms (0%)
+
+	Component Name: DrugMentionAnnotator
+	Event Type: Analysis
+	Duration: 2ms (0.23%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.GenericCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 50ms (5.86%)
+
+	Component Name: POSTagger
+	Event Type: Analysis
+	Duration: 9ms (1.06%)
+
+	Component Name: UmlsLookupAnnotator
+	Event Type: Analysis
+	Duration: 36ms (4.22%)
+
+	Component Name: Adjust NP in NP NP to span both
+	Event Type: Analysis
+	Duration: 1ms (0.12%)
+
+	Component Name: SimpleSegmentAnnotator
+	Event Type: Analysis
+	Duration: 0ms (0%)
+
+	Component Name: ClearNLPSemanticRoleLabelerAE
+	Event Type: Analysis
+	Duration: 10ms (1.17%)
+
+	Component Name: TokenizerAnnotatorPTB
+	Event Type: Analysis
+	Duration: 2ms (0.23%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.SubjectCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 23ms (2.7%)
+
+	Component Name: StatusAnnotator
+	Event Type: Analysis
+	Duration: 0ms (0%)
+
+	Component Name: Sentence Detector annotator
+	Event Type: Analysis
+	Duration: 2ms (0.23%)
+
+	Component Name: ExtractionPrepAnnotator
+	Event Type: Analysis
+	Duration: 1ms (0.12%)
+
+	Component Name: org.apache.ctakes.assertion.medfacts.cleartk.UncertaintyCleartkAnalysisEngine
+	Event Type: Analysis
+	Duration: 15ms (1.76%)
+
+	Component Name: Fixed Flow Controller
+	Event Type: Analysis
+	Duration: 3ms (0.35%)
+
+
