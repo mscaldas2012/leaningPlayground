@@ -1,5 +1,5 @@
 .DS_Store
 .idea
-project/target/*
-target/*
-out/*
+project/target/**
+target/**
+out/**
