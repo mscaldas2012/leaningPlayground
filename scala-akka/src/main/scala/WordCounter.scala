@@ -1,58 +1,67 @@
 /**
   * Created by caldama on 12/28/16.
   */
+
+import java.io.FileInputStream
+
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
+import opennlp.tools.tokenize.{TokenizerME, TokenizerModel}
 
 case class ProcessStringMsg(string: String)
-case class StringProcessedMsg(words: Integer)
+
+case class StringProcessedMsg(words: Array[String])
 
 class StringCounterActor extends Actor {
+  var modelIn = new FileInputStream("src/test/resources/en-token.bin")
+  var model = new TokenizerModel(modelIn)
+  var tokenizer = new TokenizerME(model)
+
   def receive = {
     case ProcessStringMsg(string) => {
-      val wordsInLine = string.split(" ").length
-      sender ! StringProcessedMsg(wordsInLine)
+      var tokens = tokenizer.tokenize(string)
+      sender ! StringProcessedMsg(tokens)
     }
     case _ => println("Error: message not recognized")
   }
 }
 
-case class StartProcessFileMsg()
-
 class WordCounterActor(filename: String) extends Actor {
 
-  private var running = false
   private var totalLines = 0
   private var linesProcessed = 0
   private var result = 0
   private var fileSender: Option[ActorRef] = None
 
-  def receive = {
-    case StartProcessFileMsg() => {
-      if (running) {
-        // println just used for example purposes;
-        // Akka logger should be used instead
-        println("Warning: duplicate start message received")
-      } else {
-        running = true
-        fileSender = Some(sender) // save reference to process invoker
-        import scala.io.Source._
-        fromFile(filename).getLines.foreach { line =>
-          context.actorOf(Props[StringCounterActor]) ! ProcessStringMsg(line)
-          println("total lines: " + totalLines)
-          totalLines += 1
-        }
+  def receive = startProcess
+
+  def startProcess: Receive = {
+    case StartProcessFileMsg => {
+      println("starting counter")
+      context.become(processAlreadyRunning)
+      fileSender = Some(sender)
+
+      import scala.io.Source._
+      fromFile(filename).getLines.foreach { line =>
+        context.actorOf(Props[StringCounterActor]) ! ProcessStringMsg(line)
+        totalLines += 1
       }
     }
-    case StringProcessedMsg(words) => {
-      result += words
+    case _ => println("WordCounterActor: Message not recognized.")
+  }
+
+  def processAlreadyRunning: Receive = {
+    case StringProcessedMsg(wordsAmount) => {
+      result += wordsAmount.length
       linesProcessed += 1
       if (linesProcessed == totalLines) {
-        fileSender.map(_ ! result) // provide result to process invoker
+        fileSender.map(_ ! result)
       }
     }
-    case _ => println("message not recognized!")
+    case _ => println("Process is already running!")
   }
 }
+
+case object StartProcessFileMsg
 
 object Sample extends App {
 
@@ -69,7 +78,7 @@ object Sample extends App {
     println("using file " + args(0))
     val actor = system.actorOf(Props(new WordCounterActor(args(0))))
     implicit val timeout = Timeout(25 seconds)
-    val future = actor ? StartProcessFileMsg()
+    val future = actor ? StartProcessFileMsg
     future.map { result =>
       println("Total number of words " + result)
       system.shutdown
