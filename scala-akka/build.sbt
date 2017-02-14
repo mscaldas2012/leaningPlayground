@@ -13,7 +13,12 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 libraryDependencies += "org.apache.opennlp" % "opennlp-tools" % "1.6.0"
 libraryDependencies += "org.apache.opennlp" % "opennlp-uima" % "1.6.0"
 
-libraryDependencies += "edu.stanford.nlp" % "stanford-corenlp" % "1.2.0"
+libraryDependencies ++= Seq(
+  "edu.stanford.nlp" % "stanford-corenlp" % "3.7.0",
+  "edu.stanford.nlp" % "stanford-corenlp" % "3.7.0" classifier "models"
+)
+
+
 
 libraryDependencies += "ca.uhn.hapi" % "hapi-base" % "2.2"
 libraryDependencies += "ca.uhn.hapi" % "hapi-structures-v231" % "2.2"

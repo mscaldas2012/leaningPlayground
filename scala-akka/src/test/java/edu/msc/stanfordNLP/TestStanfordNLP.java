@@ -72,7 +72,7 @@ public class TestStanfordNLP {
 
         //Get file from resources folder
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("example.txt").getFile());
+        File file = new File(classLoader.getResource("Ameripath_file_sanjeev-1.txt").getFile());
 
         try (Scanner scanner = new Scanner(file)) {
 
@@ -98,7 +98,7 @@ public class TestStanfordNLP {
 
 
         Properties props = new Properties();
-        props.setProperty("annotators","tokenize, ssplit, pos, lemma, ner, parse, dcoref") ;
+        props.setProperty("annotators","tokenize, ssplit, pos, lemma, ner, parse") ;
         //props.setProperty("sutime.binders","0");
 
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
