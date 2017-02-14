@@ -10,17 +10,11 @@ import edu.stanford.nlp.trees.TreeCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Created by caldama on 1/11/17.
@@ -74,13 +68,27 @@ public class TestStanfordNLP {
     }
 
     private String readExample() throws URISyntaxException, IOException {
-        Path path = Paths.get(getClass().getResource("/example.txt").toURI());
-        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-        String content = "";
-        for(String l: lines) {
-            content += l ;
+        StringBuilder result = new StringBuilder("");
+
+        //Get file from resources folder
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("example.txt").getFile());
+
+        try (Scanner scanner = new Scanner(file)) {
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                result.append(line).append("\n");
+            }
+
+            scanner.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return content;
+
+        return result.toString();
+
     }
 
     @Test

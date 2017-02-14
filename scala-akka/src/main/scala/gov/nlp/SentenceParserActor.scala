@@ -2,11 +2,14 @@ package gov.nlp
 
 import java.io.{FileInputStream, IOException}
 
+import akka.actor.Actor.Receive
 import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props, Stash}
 import gov.nlp.NameRecognitionActor.{NamesFoundMsg, ProcessTokens}
+import gov.nlp.POSLemmatizationActor.POSTags
 import gov.nlp.SentenceParserActor.{FeatureSet, StartProcessFileMsg}
 import gov.nlp.TokenParserActor.{ProcessStringMsg, StringProcessedMsg}
 import opennlp.tools.namefind.{NameFinderME, TokenNameFinderModel}
+import opennlp.tools.postag.{POSModel, POSTaggerME}
 import opennlp.tools.sentdetect.{SentenceDetectorME, SentenceModel}
 import opennlp.tools.tokenize.{TokenizerME, TokenizerModel}
 
@@ -14,6 +17,11 @@ import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by marcelo on 12/30/16.
+  *
+  *
+  * Testing from https://opennlp.apache.org/documentation/1.6.0/manual/opennlp.html
+  * Models to download: http://opennlp.sourceforge.net/models-1.5/
+  *
   */
 
 
@@ -97,13 +105,32 @@ class NameRecognitionActor extends Actor with ActorLogging {
   }
 }
 
+object POSLemmatizationActor {
+  case class ProcessTokens(tokens: Array[String])
+  case class POSTags(features: Array[String])
+}
+
+class POSLemmatizationActor extends Actor with ActorLogging {
+  val modelIn = new FileInputStream("src/test/resources/en-pos-maxent.bin")
+  val posmodel: POSModel = new POSModel(modelIn)
+  val tagger: POSTaggerME = new POSTaggerME(posmodel)
+
+  override def receive: Receive = {
+    case ProcessTokens(tokens) => {
+      val postTags  = tagger.tag(tokens)
+      sender ! POSTags(postTags)
+    }
+    case _ => log.error("POSLemmatizationActor: message not recognized")
+  }
+}
+
 // Sentence Parsers
 object SentenceParserActor {
 
   //Message to process a given file...
   case class StartProcessFileMsg(words: Array[String])
 
-  case class FeatureSet(tokens: ArrayBuffer[String], names: ArrayBuffer[String])
+  case class FeatureSet(tokens: ArrayBuffer[String], names: ArrayBuffer[String], posTags: ArrayBuffer[String])
 
 }
 
@@ -112,6 +139,7 @@ class SentenceParserActor(filename: String) extends Actor with ActorLogging {
   private var linesProcessed = 0
   private var tokens: ArrayBuffer[String] = ArrayBuffer[String]()
   private var names: ArrayBuffer[String] = ArrayBuffer[String]()
+  private var postags: ArrayBuffer[String] = ArrayBuffer[String]()
 
   private var fileSender: Option[ActorRef] = None
 
@@ -152,11 +180,12 @@ class SentenceParserActor(filename: String) extends Actor with ActorLogging {
   }
 
   def processAlreadyRunning(respondTo: ActorRef): Receive = {
-    case StringProcessedMsg(wordsAmount) => {
+    case StringProcessedMsg(words) => {
       log.info("processing msg returned... " + totalLines + " sentences...")
-      tokens = tokens ++ wordsAmount
+      tokens = tokens ++ words
       //Extract named entities:
-      context.actorOf(Props[NameRecognitionActor]) ! ProcessTokens(wordsAmount)
+      context.actorOf(Props[NameRecognitionActor]) ! ProcessTokens(words)
+      context.actorOf(Props[POSLemmatizationActor]) ! ProcessTokens(words)
       //      if (linesProcessed == totalLines) {
       //        fileSender.map(_ ! tokens)
       //      }
@@ -164,10 +193,14 @@ class SentenceParserActor(filename: String) extends Actor with ActorLogging {
     case NamesFoundMsg(namesList) => {
       log.info("Received somenames...")
       names = names ++ namesList
+    }
+    case POSTags(pt) => {
+      log.info("Receibed POS Tags...")
+      postags = postags ++ pt
       linesProcessed += 1
       if (linesProcessed == totalLines) {
-         respondTo ! FeatureSet(tokens, names)
-         //context stop self
+        respondTo ! FeatureSet(tokens, names, postags)
+        //context stop self
       }
     }
     case _ => log.warning("Process is already running!")
@@ -196,14 +229,17 @@ object Sample extends App {
     implicit val timeout = Timeout(25 seconds)
     val future = actor ? StartProcessFileMsg
     future onComplete {
-      case util.Success(FeatureSet(tokens, names)) => {
+      case util.Success(FeatureSet(tokens, names, postags)) => {
+        val endTime = System.currentTimeMillis()
         println("tokens: " + tokens.length)
         println("names: " + names.length + " --> " + names )
+        println("postags: " + postags)
         system.shutdown
+        println("in process took " + (endTime - startTime) + " ms")
       }
     }
     val endTime = System.currentTimeMillis()
-    println("process took " + (endTime - startTime) + " ms")
+    println("out process took " + (endTime - startTime) + " ms")
 
   }
 
