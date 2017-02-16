@@ -72,7 +72,7 @@ public class TestStanfordNLP {
 
         //Get file from resources folder
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("Ameripath_file_sanjeev-1.txt").getFile());
+        File file = new File(classLoader.getResource("BreastSiteNoAutocode-1.txt").getFile());
 
         try (Scanner scanner = new Scanner(file)) {
 

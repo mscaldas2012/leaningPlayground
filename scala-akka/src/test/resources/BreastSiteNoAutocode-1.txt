@@ -1,25 +1,51 @@
-MSH|^~\&|PATHLAB_LIS|Sudbury Regional Hospital^4059^MOH|PIMS|CCO|20120928100043|F10198A64BD3D027E7A7237B6B014347C6670AD6|ORU^R01|1028109643|P|2.5|||||||||
-PID|1||SH0012345^^^^CMR^Sudbury Regional Hospital&4059&MOH~^^^^RMR^~SH0012345^^^^MRN^Sudbury Regional Hospital&4059&MOH~1234567890&AA&ON^^^^JHN||XXXXXX^XXXXX^||19200101|M|||123 XXXXXXX^^XXXXX^ON^X1X 1X1^220|||||||||||||||||||N
-OBR|1||12:S123|11529-5^Surgical Pathology Study Report^LN^P^Pathology^L|||20120926|||12345^XXXXXXX^XXXX^^^^||||||||||N||20120927|||F|||||||56789^XXXXX^XXXXX^^^^MD|
-OBX|1|FT|22633-2^Path report.site of origin^LN||A) Left breast @ 3 o'clock\E\.br\E\B) Left breast @ 3 o'clock||||||F
-OBX|2|FT|22636-5^Path report.relevant Hx^LN||Mass 3 o'clock left breast.||||||F
-OBX|3|FT|22634-0^Path report.gross description^LN||SCO 3 fragments of tissue measuring from\E\.br\E\0.3 to 1.5cm in greatest dimension EIT, A-B.\E\.br\E\* Rec'd one specimen only.||||||F
-OBX|4|FT|22637-3^Path report.final diagnosis^LN||LEFT BREAST BIOPSY 3 O'CLOCK:\E\.br\E\- CONSISTENT WITH IN SITU AND INVASIVE DUCTAL \E\.br\E\ CARCINOMA WITH LOBULAR FEATURES.\E\.br\E\- IN SITU CARCIOMA IS SOLID AND INTERMEDIATE\E\.br\E\GRADE.||||||F
+Path report.site of origin
+    A) Left breast @ 3 o'clock
+    B) Left breast @ 3 o'clock.
+Path report.relevant Hx: Mass 3 o'clock left breast.
+Path report.gross description: SCO 3 fragments of tissue measuring from
+    0.3 to 1.5cm in greatest dimension EIT, A-B.
+    * Rec'd one specimen only.
+Path report.final diagnosis:LEFT BREAST BIOPSY 3 O'CLOCK:
+    - CONSISTENT WITH IN SITU AND INVASIVE DUCTAL
+	 CARCINOMA WITH LOBULAR FEATURES.
+	- IN SITU CARCIOMA IS SOLID AND INTERMEDIATE
+	GRADE.
 
-MSH|^~\&|PATHLAB_LIS|Lakeridge Health Oshawa^3932^MOH|PIMS|CCO|20130914053059|E609C68649120188376C23A02EAA766E35BC2571|ORU^R01|999999999999|P|2.5|||||||||
-PID|1||Y9999999^^^^CMR^Rouge Valley Health Centenary&9999&MOH~Y9999999^^^^MRN^Rouge Valley Health Centenary&9999&MOH~9999999999&VE&ON^^^^JHN||XXXXX^XXXXXXX^^^^^||99999999|F|||99 XXXXX XXXX^^XXXX^XX^X9X 9X9^999|||||||||||||||||||N|||||
-OBR|1||CC-2801-13|33716-2^Study Report: Cytology.non-gyn^LN^C^Cytology^L|||20130910|||57190^XXXX^XXXXXXX^XXXX-XXXXX^^^^||||||||||||20130910|||F|||||||99999^XXXXX XXXXXX^XXXXXX^^^^^|||||||||||||
-OBX|1|FT|22636-5^Path report.relevant Hx^LN||\X0D\\X0A\SUSPICIOUS MASS LEFT BREAST @ 12 O'CLOCK\X0D\\X0A\||||||F||||||||
-OBX|2|FT|22637-3^Path report.final diagnosis^LN||\X0D\\X0A\FINE NEEDLE ASPIRATION LEFT BREAST:\X0D\\X0A\     - SATISFACTORY FOR EVALUATION;\X0D\\X0A\     - SUSPICIOUS FOR BREAST CARCINOMA;\X0D\\X0A\     - ADVISE CORRELATION WITH THE CLINICAL AND BREAST IMAGING FINDING. \X0D\\X0A\||||||F||||||||
-OBX|3|FT|22634-0^Path report.gross description^LN||\X0D\\X0A\RECEIVED ASPIRATE IN CYTOSPIN FLUID; MADE 1 SMEAR AND 1 CYTOSPIN\X0D\\X0A\||||||F||||||||
-OBX|4|FT|22635-7^Path report.microscopic observation^LN||SMEAR / CYTOSPIN:\X0D\\X0A\     - SINGLE AND SMALL DISCOHESIVE GROUPS AND SMALL CLUSTERS OF ATYPICAL CELLS WITH\X0D\\X0A\       SMALL BUT VISIBLE NUCLEOLI. \X0D\\X0A\     - SOME OF THE CELLS HAVE APOCRINE FEATURES. \X0D\\X0A\||||||F||||||||
-OBX|5|FT|22633-2^Path report.site of origin^LN||\X0D\\X0A\FNA LEFT BREAST\X0D\\X0A\||||||F||||||||
+Path report.relevant Hx: SUSPICIOUS MASS LEFT BREAST @ 12 O'CLOCK
+Path report.final diagnosis^:FINE NEEDLE ASPIRATION LEFT BREAST:
+	     - SATISFACTORY FOR EVALUATION;
+    - SUSPICIOUS FOR BREAST CARCINOMA;
+	     - ADVISE CORRELATION WITH THE CLINICAL AND BREAST IMAGING FINDING. 
+	
+Path report.gross description:RECEIVED ASPIRATE IN CYTOSPIN FLUID; MADE 1 SMEAR AND 1 CYTOSPIN
+Path report.microscopic observation:SMEAR / CYTOSPIN:
+	     - SINGLE AND SMALL DISCOHESIVE GROUPS AND SMALL CLUSTERS OF ATYPICAL CELLS WITH
+	       SMALL BUT VISIBLE NUCLEOLI. 
+	     - SOME OF THE CELLS HAVE APOCRINE FEATURES. 
 
-MSH|^~\&|PATHLAB_LIS|LONDON HEALTH SCIENCES CENTRE^3850^MOH|PIMS|CCO|20130926094836|38CE6ED8ACDB4C887D219DFDD297C66675DE5485|ORU^R01|Q1201228272T1956080166|P|2.5|
-PID|1||J9999999^^^^CMR^ST JOSEPHS HEALTH CARE LONDON&9999&MOH~J9999999^^^^MRN^LONDON HEALTH SCIENCES CENTRE,UNIVERSITY&9999&MOH~9999999999&NT&ON^^^^JHN||XXXXXX^XXXXXX^XXXXXXXXX||99999999|F|||999-9999 XXXXXXXXXXXXX XX X^^XXXXXX^XXX^X9X9X9^999||||||||||||||||Retired|||N|
-OBR|1||S-13-0039110|11529-5^Surgical Pathology Study Report^LN^BX^Biopsy^L|||20130923|||51075^XXXXXXX^XXXXX^X||||||||||N||20130926|||F|||||||99999^XXXXXXX^XXXXXX|
-OBX|1|FT|22633-2^Path report.site of origin^LN||\.br\A Breast core biopsy, Lt lower outer quad||||||F|
-OBX|2|FT|22636-5^Path report.relevant Hx^LN||\.br\The following information was submitted electronically by the ordering physician:\.br\indeterminant calcifications r/o ca||||||F|
-OBX|3|FT|22634-0^Path report.gross description^LN||\.br\The specimen and patient identifiers are reviewed and are verified.\.br\Tissue excised at 1300\.br\Tissue fixed at 1312\.br\Ischemic time: 12 minutes\.br\Total fixation time: 28 hours, 48 minutes\.br\The specimen consists of multiple pieces of tissue.  The longest piece measures 0.9 x 0.2 x 0.2 cm.  Section code:  (A1) entirely submitted.   ddv/dr  2013/09/25 08:32||||||F|
-OBX|4|FT|22635-7^Path report.microscopic observation^LN||\.br\These cores show several spaces of DCIS. Invasive carcinoma is not identified. There is also a small fragment of papilloma.||||||F|
-OBX|5|FT|22637-3^Path report.final diagnosis^LN||\.br\Breast (left lower outer quad), core biopsy:\.br\       Ductal carcinoma in situ;\.br\ - low to intermediate nuclear grade, \.br\ - cribriform architecture,\.br\   - with central necrosis and calcification.\.br\\.br\Case reviewed with Murad Alturkustani, M.D., Resident||||||F|
+Path report.site of origin:
+	FNA LEFT BREAST
+
+
+Path report.site of origin:
+	A Breast core biopsy, Lt lower outer quad
+Path report.relevant Hx:
+	The following information was submitted electronically by the ordering physician:
+	indeterminant calcifications r/o ca
+Path report.gross description:
+	The specimen and patient identifiers are reviewed and are verified.
+	Tissue excised at 1300
+	Tissue fixed at 1312
+	Ischemic time: 12 minutes
+	Total fixation time: 28 hours, 48 minutes
+	The specimen consists of multiple pieces of tissue.  The longest piece measures 0.9 x 0.2 x 0.2 cm.  Section code:  (A1) entirely submitted.   ddv/dr  2013/09/25 08:32
+Path report.microscopic observation:
+	These cores show several spaces of DCIS. Invasive carcinoma is not identified. There is also a small fragment of papilloma.
+Path report.final diagnosis:
+	Breast (left lower outer quad), core biopsy:
+	       Ductal carcinoma in situ;
+	 - low to intermediate nuclear grade, 
+	 - cribriform architecture,
+	   - with central necrosis and calcification.
+	
+	Case reviewed with Murad Alturkustani, M.D., Resident
