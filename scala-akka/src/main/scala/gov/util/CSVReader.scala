@@ -11,14 +11,15 @@ import scala.collection.mutable.ListBuffer
 
 class CSVReader extends App {
 
-   def readFile(filename: String): ListBuffer[Array[String]] = {
+   def readFile(filename: String, delim: String): ListBuffer[Array[String]] = {
       val bufferedSource = io.Source.fromFile(filename)
      // var row:Array[String] = null
       var lines = new ListBuffer[Array[String]]()
       var i:Int = 0
       for (line <- bufferedSource.getLines) {
-         val row = line.split(",(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)").map(_.trim.replaceAll("\"",""))
-         lines += row
+        val row = line.split(delim + "(?=([^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)").map(_.trim.replaceAll("\"",""))
+        //val row = line.split(delim).map(_.trim.replaceAll("\"",""))
+        lines += row
           // do whatever you want with the columns here
          i = i+1
 

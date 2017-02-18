@@ -18,8 +18,6 @@ libraryDependencies ++= Seq(
   "edu.stanford.nlp" % "stanford-corenlp" % "3.7.0" classifier "models"
 )
 
-
-
 libraryDependencies += "ca.uhn.hapi" % "hapi-base" % "2.2"
 libraryDependencies += "ca.uhn.hapi" % "hapi-structures-v231" % "2.2"
 libraryDependencies += "ca.uhn.hapi" % "hapi-structures-v25" % "2.2"

@@ -1,0 +1,14 @@
+
+# Retrieve All MORPH Codes by Site (Ex. BREAST):
+Match (h:MORPH_CODE)-[r:OCCURS_IN]->(s:SITE {name:'BREAST'}) return h
+
+#Retrieve  a specific node:
+Match (h:MORPH_CODE {name:'Intracystic carcinoma, NOS'}) return h
+
+#Retrieve Morhp codes with NOS in the name:
+Match (h:MORPH_CODE) Where h.name =~ '.*NOS' return h
+
+#Retrieve morhp code 8000
+Match (h:MORPH_CODE) Where h.histology = 8000 return h
+or
+Match (h:MORPH_CODE {histology:8000}) return h;
