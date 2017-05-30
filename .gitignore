@@ -2,4 +2,5 @@
 .idea
 **/target/**
 target/**
-out/**
+**/out/**
+*.class

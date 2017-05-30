@@ -19,7 +19,7 @@ public class XORSwap {
      * @param y second value
      * @return an array with x and y inverted. /// Pure didactically
      */
-    public static int[] swap(Integer x, Integer y) {
+    public static int[] swap(int x, int y) {
         x = x ^ y; // x = X ^ Y
         y = y ^ x; // Y = Y ^ (X ^ Y) = X ^ (Y ^ Y) = X ^ 0 = X
         x = x ^ y; // X = (X ^ Y) ^ X = Y ^ (X ^ X) = Y ^ 0 = Y
@@ -27,8 +27,8 @@ public class XORSwap {
     }
 
     public static void main(String[] args) {
-        Integer x = 5;
-        Integer y = 8;
+        int x =  5;
+        int y = 8;
         int[] result = XORSwap.swap(x,y);
         System.out.println(result[0] + " -- > " + result[1]);
         System.out.println(x + " --> " + y);
